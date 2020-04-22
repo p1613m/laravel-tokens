@@ -17,7 +17,7 @@
         "php": "^7.0.0",
         "illuminate/auth": "~5.5",
         "illuminate/contracts": "~5.5",
-        "illuminate/http": "~5.5",
+        "illuminate/http": "~7.7",
         "illuminate/queue": "~7.0",
         "illuminate/support": "~5.5"
     },
