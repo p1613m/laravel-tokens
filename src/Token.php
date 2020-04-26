@@ -21,54 +21,7 @@ class Token extends Model
      */
     protected $fillable = [
         'api_token',
-        'expired_at',
     ];
-
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    protected $dates = ['expired_at'];
-
-    /**
-     * Set the expired timestamp value.
-     *
-     * @param  mixed  $value
-     * @return void
-     */
-    public function setExpiredAtAttribute($value)
-    {
-        if (! is_null($value) && ! $value instanceof Carbon) {
-            $value = Carbon::parse($value);
-        }
-
-        $this->attributes['expired_at'] = $value;
-    }
-
-    /**
-     * Determine if the token is expired or not.
-     *
-     * @return bool
-     */
-    public function isExpired()
-    {
-        if (is_null($this->expired_at)) {
-            return false;
-        }
-
-        return now()->greaterThan(new Carbon($this->expired_at));
-    }
-
-    /**
-     * Determine if the token is not expired.
-     *
-     * @return bool
-     */
-    public function isNotExpired()
-    {
-        return ! $this->isExpired();
-    }
 
     /**
      * Get the user that owns the token.

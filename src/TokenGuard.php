@@ -61,7 +61,7 @@ class TokenGuard implements Guard
      */
     public function user()
     {
-        if (is_null($this->user) && ($token = $this->token()) && $token->isNotExpired()) {
+        if (is_null($this->user) && $token = $this->token()) {
             $this->user = (clone $token)->user;
         }
 
@@ -122,11 +122,7 @@ class TokenGuard implements Guard
      */
     public function validate(array $credentials = [])
     {
-        if ($token = $this->retrieveTokenForRequest($credentials)) {
-            return $token->isNotExpired();
-        }
-
-        return false;
+        return $this->retrieveTokenForRequest($credentials);
     }
 
     /**
