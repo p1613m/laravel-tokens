@@ -14,6 +14,8 @@ class Token extends Model
      */
     protected $table = 'tokens';
 
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
